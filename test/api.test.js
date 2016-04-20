@@ -1,10 +1,9 @@
 "use strict";
 
-
 const chai           = require('chai'),
       h              = require('./helpers'),
       chaiAsPromised = require('chai-as-promised'),
-      Api            = require('../../lib/api'),
+      Api            = require('../index.js'),
       sinon          = require('sinon'),
       sinonChai      = require('sinon-chai'),
       config         = require('config'),

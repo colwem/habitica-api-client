@@ -1,7 +1,6 @@
 'use strict';
 
-const config = require('config'),
-      mongoose = require('mongoose');
+const config = require('config');
 
 // let mongoose = require('mongoose'),
     // mockgoose = require('mockgoose');
@@ -31,38 +30,5 @@ const helpers = {
     return 'blah';
   }
 }
-
-
-beforeEach(function (done) {
-
-  function clearDB() {
-    for (var i in mongoose.connection.collections) {
-      mongoose.connection.collections[i].remove(function() {});
-    }
-    return done();
-  }
-
-
-  if (mongoose.connection.readyState === 0) {
-    let uri = config.get('database.url') + config.get('database.name');
-
-    mongoose.connect(uri, function (err) {
-      if (err) {
-        throw err;
-      }
-
-      return clearDB();
-    });
-  } else {
-
-    return clearDB();
-  }
-});
-
-
-afterEach(function (done) {
-  mongoose.disconnect();
-  return done();
-});
 
 module.exports = helpers;
